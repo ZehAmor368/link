@@ -1,7 +1,7 @@
 package link_test
 
 import (
-	link "link/pkg"
+	link "link"
 	"os"
 	"strings"
 	"testing"
@@ -15,12 +15,12 @@ func TestExtract(t *testing.T) {
 	}{
 		{
 			desc:   "test with ex1.html",
-			path:   "../ex1.html",
+			path:   "./ex1.html",
 			expect: []link.Link{{Href: "/other-page", Text: "A link to another page"}},
 		},
 		{
 			desc: "test with ex2.html",
-			path: "../ex2.html",
+			path: "./ex2.html",
 			expect: []link.Link{
 				{Href: "https://www.twitter.com/joncalhoun", Text: "Check me out on twitter"},
 				{Href: "https://github.com/gophercises", Text: "Gophercises is on Github!"},
@@ -28,7 +28,7 @@ func TestExtract(t *testing.T) {
 		},
 		{
 			desc: "test with ex3.html",
-			path: "../ex3.html",
+			path: "./ex3.html",
 			expect: []link.Link{
 				{Href: "#", Text: "Login"},
 				{Href: "/lost", Text: "Lost? Need help?"},
@@ -37,7 +37,7 @@ func TestExtract(t *testing.T) {
 		},
 		{
 			desc:   "test with ex4.html",
-			path:   "../ex4.html",
+			path:   "./ex4.html",
 			expect: []link.Link{{Href: "/dog-cat", Text: "dog cat"}},
 		},
 	}
