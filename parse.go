@@ -1,3 +1,4 @@
+// Package link will parse and return any link from a given HTML document.
 package link
 
 import (
