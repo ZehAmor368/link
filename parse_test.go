@@ -1,7 +1,6 @@
-package link_test
+package link
 
 import (
-	link "link"
 	"os"
 	"strings"
 	"testing"
@@ -11,17 +10,17 @@ func TestExtract(t *testing.T) {
 	testCases := []struct {
 		desc   string
 		path   string
-		expect []link.Link
+		expect []Link
 	}{
 		{
 			desc:   "test with ex1.html",
 			path:   "./ex1.html",
-			expect: []link.Link{{Href: "/other-page", Text: "A link to another page"}},
+			expect: []Link{{Href: "/other-page", Text: "A link to another page"}},
 		},
 		{
 			desc: "test with ex2.html",
 			path: "./ex2.html",
-			expect: []link.Link{
+			expect: []Link{
 				{Href: "https://www.twitter.com/joncalhoun", Text: "Check me out on twitter"},
 				{Href: "https://github.com/gophercises", Text: "Gophercises is on Github!"},
 			},
@@ -29,7 +28,7 @@ func TestExtract(t *testing.T) {
 		{
 			desc: "test with ex3.html",
 			path: "./ex3.html",
-			expect: []link.Link{
+			expect: []Link{
 				{Href: "#", Text: "Login"},
 				{Href: "/lost", Text: "Lost? Need help?"},
 				{Href: "https://twitter.com/marcusolsson", Text: "@marcusolsson"},
@@ -38,7 +37,7 @@ func TestExtract(t *testing.T) {
 		{
 			desc:   "test with ex4.html",
 			path:   "./ex4.html",
-			expect: []link.Link{{Href: "/dog-cat", Text: "dog cat"}},
+			expect: []Link{{Href: "/dog-cat", Text: "dog cat"}},
 		},
 	}
 	for _, tC := range testCases {
@@ -47,7 +46,7 @@ func TestExtract(t *testing.T) {
 			if err != nil {
 				t.Error("open file", err)
 			}
-			links, err := link.Parse(f)
+			links, err := Parse(f)
 			if err != nil {
 				t.Error("extracting links", err)
 			}
