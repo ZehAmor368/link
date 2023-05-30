@@ -1,4 +1,4 @@
-module link
+module github.com/ZehAmor368/link
 
 go 1.18
 
